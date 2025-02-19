@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#content {
+    display: flex;
+    margin: 30px auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: cadetblue;
+    width: 30%;
+    padding: 50px 20px;
+    border: 1px solid black;
+}
+
+input {
+    height: 30px;
+    font-size: 20px;
+}
+
+.btn {
+    border-radius: 999px;
+    padding: 8px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+}
+
+.btn:hover {
+    background-color: gray;
+}
+
+ul {
+    list-style: circle;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    padding: 20px;
+}

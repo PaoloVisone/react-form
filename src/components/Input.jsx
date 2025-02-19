@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // Array di articoli
-const listArticles = ['il miei viaggi', 'i miei pensieri', 'le mie recensioni']
+const listArticles = ['Il miei viaggi', 'I miei pensieri', 'Le mie recensioni']
 
 export default function input() {
 
@@ -30,29 +30,43 @@ export default function input() {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={newArticle}
-                    onChange={e => { setNewArticle(e.target.value) }} />
-                <button>INVIA</button>
-            </form>
+            <div id="content">
+                <div id="input-box">
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" value={newArticle}
+                            onChange={e => { setNewArticle(e.target.value) }} />
+                        <button className="btn">INVIA</button>
+                    </form>
+                </div>
 
-            {/* //lista dei articoli */}
 
-            {/* Se non ci sono articoli */}
-            {articles.length === 0 ?
-                <h2>Non ci sono articoli</h2>
-                :
-                <ul>
-                    {articles.map((article, i) => (
-                        <li key={i}>
-                            {article}
-                            <button onClick={() => removeArticle(i)}>
-                                Elimina
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            }
+                {/* //lista dei articoli */}
+
+                {/* Se non ci sono articoli */}
+
+                {articles.length === 0 ?
+                    <h2>Non ci sono articoli</h2>
+                    :
+                    <div id="list-box">
+
+                        <ul>
+                            {articles.map((article, i) => (
+                                <li key={i}>
+                                    {article}
+
+                                    <button className="btn" onClick={() => removeArticle(i)}>
+                                        Elimina
+                                    </button>
+
+                                </li>
+
+                            ))}
+                        </ul>
+
+                    </div>
+
+                }
+            </div>
         </>
     )
 
