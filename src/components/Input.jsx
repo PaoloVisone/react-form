@@ -1,26 +1,42 @@
 import { useState } from "react";
 
 // Array di articoli
-const Article = ['il miei viaggi', 'i miei pensieri', 'le mie recensioni']
+const listArticles = ['il miei viaggi', 'i miei pensieri', 'le mie recensioni']
 
 export default function input() {
 
     // Stato dell'articolo
-    const [listArticle, setListAricle] = useState(Article);
+    const [Articles, setListArticles] = useState(listArticles);
     // Inserimento nuovo articolo
     const [newArticle, setNewArticle] = useState('');
 
     //preventDefault per non inviare il Form
-    const handleSubmit = event => {
-        event.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
+        // Creazione di un nuovo array
+        const updateArticle = [...Articles, newArticle];
+        setListArticles(updateArticle);
+        // Svuto la cella
+        setNewArticle('');
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={newArticle}
-                onChange={e => { setNewArticle(e.target.value) }} />
-            <button>INVIA</button>
-        </form>
+        <>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={newArticle}
+                    onChange={e => { setNewArticle(e.target.value) }} />
+                <button>INVIA</button>
+            </form>
+
+            {/* //lista dei articoli */}
+
+            <ul>
+                {Articles.map((Article, i) => (
+                    <li key={i}>
+                        {Article}
+                    </li>
+                ))}
+            </ul></>
     )
 
 }
