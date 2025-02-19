@@ -6,7 +6,7 @@ const listArticles = ['il miei viaggi', 'i miei pensieri', 'le mie recensioni']
 export default function input() {
 
     // Stato dell'articolo
-    const [Articles, setListArticles] = useState(listArticles);
+    const [articles, setListArticles] = useState(listArticles);
     // Inserimento nuovo articolo
     const [newArticle, setNewArticle] = useState('');
 
@@ -14,10 +14,18 @@ export default function input() {
     const handleSubmit = e => {
         e.preventDefault();
         // Creazione di un nuovo array
-        const updateArticle = [...Articles, newArticle];
-        setListArticles(updateArticle);
+        const updatedArticle = [...articles, newArticle];
+        setListArticles(updatedArticle);
         // Svuto la cella
         setNewArticle('');
+    }
+
+    // Cancello elemento
+    const removeArticle = i => {
+        const updatedArticle = articles.filter((article, index) => {
+            return index !== i
+        });
+        setListArticles(updatedArticle);
     }
 
     return (
@@ -31,9 +39,12 @@ export default function input() {
             {/* //lista dei articoli */}
 
             <ul>
-                {Articles.map((Article, i) => (
+                {articles.map((article, i) => (
                     <li key={i}>
-                        {Article}
+                        {article}
+                        <button onClick={() => removeArticle(i)}>
+                            Elimina
+                        </button>
                     </li>
                 ))}
             </ul></>
