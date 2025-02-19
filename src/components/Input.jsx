@@ -38,16 +38,22 @@ export default function input() {
 
             {/* //lista dei articoli */}
 
-            <ul>
-                {articles.map((article, i) => (
-                    <li key={i}>
-                        {article}
-                        <button onClick={() => removeArticle(i)}>
-                            Elimina
-                        </button>
-                    </li>
-                ))}
-            </ul></>
+            {/* Se non ci sono articoli */}
+            {articles.length === 0 ?
+                <h2>Non ci sono articoli</h2>
+                :
+                <ul>
+                    {articles.map((article, i) => (
+                        <li key={i}>
+                            {article}
+                            <button onClick={() => removeArticle(i)}>
+                                Elimina
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            }
+        </>
     )
 
 }
